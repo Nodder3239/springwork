@@ -1,0 +1,9 @@
+package com.kh.model;
+
+@Getter
+@Setter
+public class UserDTO {
+	//ÇÊµå
+	private String name;
+	private int age;
+}

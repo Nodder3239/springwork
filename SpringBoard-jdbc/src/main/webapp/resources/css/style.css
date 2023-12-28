@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 #content{width: 1000px; margin: 0 auto;}
-h2{color: #00f;}
+h2{color: #00f; text-align: center;}
 .main-pic{text-align: center;}
 .menu{text-align: center;}
-a{color: blue;}
+a{color: blue; text-decoration: none;}
+

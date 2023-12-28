@@ -15,7 +15,10 @@
 			<img src = "/resources/images/mal1.jpg" alt="개" style="width: 500px;">
 		</div>
 		<div class="menu">
-			<a href="/board/write">글쓰기</a>
+			<a href="/board/write">글쓰기</a>&nbsp;&nbsp;&nbsp;
+			<a href="/board/list">글목록</a>&nbsp;&nbsp;&nbsp;
+			<a href="/user/join">회원가입</a>&nbsp;&nbsp;&nbsp;
+			<a href="/user/login">로그인</a>&nbsp;&nbsp;&nbsp;
 		</div>
 	</div>
 </body>

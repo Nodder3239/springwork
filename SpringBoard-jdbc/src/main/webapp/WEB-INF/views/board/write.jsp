@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,26 +10,24 @@
 <link >
 </head>
 <body>
+	
 	<div id="content">
 		<h2>글쓰기</h2>
 			<form action='/board/write' method="post">
-				<table>
+				<table class = tbl_write>
 					<tr>
 						<td>
-							<label>글제목</label>
-							<input type="text" name="boardTitle">
+							<input type="text" name="boardTitle" placeholder="글제목">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label>글쓴이</label>
-							<input type="text" name="boardWriter">
+							<input type="text" name="boardWriter" value="${sessionId}" readonly>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<label>글내용</label>
-							<textarea rows="5" cols="50" name="boardContent"></textarea>
+							<textarea rows="5" cols="50" name="boardContent">글내용</textarea>
 						</td>
 					</tr>
 					<tr>

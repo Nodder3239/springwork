@@ -30,9 +30,7 @@ header nav{width: 50%; float: right;}
 
 /* 메인  */
 .main {text-align:center;}
-.main_img{margin: 0 auto; text-align:center;}
-.main_img img{width: 30%; border-radius: 5px;}
-
+.main_pic {width: 50%; margin: 0 auto;}
 
 /* 로그인 */
 #content_login {width: 20%; margin: 200px auto;}

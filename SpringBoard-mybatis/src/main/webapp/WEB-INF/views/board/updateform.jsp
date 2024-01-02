@@ -16,12 +16,11 @@
 		<form action="/board/update" method="post">
 			<input type="hidden" name="id" value="${board.id }">
 			<input type="text" name="boardTitle" class="form-control mt-4 mb-2"
-				placeholder="${board.boardTitle }" required
+				value="${board.boardTitle }" required
 			>
 			<div class="form-group">
 				<textarea class="form-control" rows="10" name="boardContent"
-					placeholder="${board.boardContent }" required style="resize: none;"
-				></textarea>
+					required style="resize: none;">${board.boardContent }</textarea>
 			</div>
 			<input class="btn btn-outline-secondary" type="submit" value="수정">
 			<input class="btn btn-outline-secondary" type="reset" value="초기화">

@@ -24,24 +24,24 @@
 				<div class="mb-3">
 		          <label for="userPassWd">비밀번호</label>
 		          <div class="input-group">
-		            <input type="password" class="form-control" name="userPasswd" id="userPassWd" placeholder="${user.userPasswd }" required>
+		            <input type="password" class="form-control" name="userPasswd" id="userPassWd" placeholder="Password" required>
 		          </div>
 		        </div>
 				<div class="mb-3">
 		          <label for="userName">이름</label>
 		          <div class="input-group">
-		            <input type="text" class="form-control" name="userName" id="userName" placeholder="${user.userName }" required>
+		            <input type="text" class="form-control" name="userName" id="userName" value="${user.userName }" required>
 		          </div>
 		        </div>
 		        <div class="mb-3">
 		          <label for="userAge">나이</label>
 		          <div class="input-group">
-		            <input type="text" class="form-control" name="userAge" id="userAge" placeholder="${user.userAge }">
+		            <input type="text" class="form-control" name="userAge" id="userAge" value="${user.userAge }">
 		          </div>
 		        </div>
 		        <div class="mb-3">
 		        	<input class="btn btn-secondary" type="submit" value="수정">
-					<input class="btn btn-secondary" type="reset" value="취소">
+					<input class="btn btn-secondary" type="reset" value="초기화">
 		        </div>
 			</form>
 		</div>

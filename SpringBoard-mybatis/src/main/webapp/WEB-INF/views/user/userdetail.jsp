@@ -13,39 +13,37 @@
 <body>
 	<jsp:include page="../layout/header.jsp"/>
 	<div id="content">
+		<div id="content_join">
 		<h2>회원 상세보기</h2>
-		<table class="tbl_join">
-			<tr>
-			   <td><label>아이디</label></td>
-				<td>
-					${user.userId }
-				</td>
-			</tr>
-			<tr>
-			    <td> <label>비밀번호</label></td>
-				<td>
-					${user.userPasswd }
-				</td>
-			</tr>
-			<tr>
-			    <td><label>이름</label></td>
-				<td>
-					${user.userName }
-				</td>
-			</tr>
-			<tr>
-			    <td><label>나이</label></td>
-				<td>
-					${user.userAge }
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<button onclick="list()">목록</button>
-				</td>
-			</tr>
-		</table>
-	</div>
+		<div class="mb-3">
+		          <label for="userId">아이디</label>
+		          <div class="input-group">
+		            <input type="text" class="form-control" name="userId" id="userId" placeholder="${user.userId }" readonly>
+		          </div>
+		        </div>
+				<div class="mb-3">
+		          <label for="userPassWd">비밀번호</label>
+		          <div class="input-group">
+		            <input type="password" class="form-control" name="userPasswd" id="userPassWd" placeholder="${user.userPasswd }" readonly>
+		          </div>
+		        </div>
+				<div class="mb-3">
+		          <label for="userName">이름</label>
+		          <div class="input-group">
+		            <input type="text" class="form-control" name="userName" id="userName" placeholder="${user.userName }" readonly>
+		          </div>
+		        </div>
+		        <div class="mb-3">
+		          <label for="userAge">나이</label>
+		          <div class="input-group">
+		            <input type="text" class="form-control" name="userAge" id="userAge" placeholder="${user.userAge }" readonly>
+		          </div>
+		        </div>
+		        <div class="mb-3">
+		        	<button class="btn btn-secondary" onclick="list()">목록</button>
+		        </div>
+		    </div>
+		</div>
 	<script>
 		let list = function(){
 			location.href = "/user/";

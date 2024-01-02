@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;}
+
+#content{width: 60%; margin: 50px auto;}
+h2{color: #000; text-align: center;}
+.main-pic{text-align: center;}
+.menu{text-align: center;}
+a{text-decoration: none;}
+ul li{list-style: none;}
+
+/* 헤더 */
+header{height: 80px; background: #EDEDED;}
+header #logo{float: left;}
+#logo h1{line-height: 80px;}
+#logo h1 a{color: #111; padding-left: 24px; font-style: italic;}
+#logo h1 a:hover{color: #444;}
+header nav{width: 50%; float: right;}
+#topMenu{line-height: 80px; padding-left: 150px;}
+#topMenu li{float: left; margin: 0 20px;}
+#topMenu li a{color: #444; padding: 0 20px;}
+#topMenu li a:hover{color: #111;}
+
+@media screen and (max-width: 1440px) {
+	header nav{width: 70%;}
+}
+@media screen and (max-width: 1180px) {
+	header nav{width: 80%;}
+}
+
+/* 메인  */
+.main {text-align:center;}
+.main_img{margin: 0 auto; text-align:center;}
+.main_img img{width: 30%; border-radius: 5px;}
+
+
+/* 로그인 */
+#content_login {width: 20%; margin: 200px auto;}
+
+/* 회원가입 */
+#content_join {width: 20%; margin: 10px auto;}
+
+/* 게시판 */
+#tbl_list {margin: 0 auto; width: 100%; text-align: center;}
+.td_title {width: 50%; text-overflow: ellipsis;}
+.btn_write {width: 100%; margin: 10px auto;}
+
+/* 게시판 상세보기 */
+.tbl_detail {width: 100%; margin: 50px auto; padding: 20px;}
+
+/* 글쓰기 */
+.tbl_write tr{margin: 10px 0px;}

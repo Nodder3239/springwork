@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.khit.web.mapper.BoardMapper">	
+	<select id="insert">
+		insert into boards(boardtitle, userid, boardcontent)
+		values(#{boardTitle}, #{userId}, #{boardContent})
+	</select>
+	<select id="findAll" resultType="com.khit.web.dto.BoardDTO">
+		select * from boards order by id desc
+	</select>	
+	<select id="findById" resultType="com.khit.web.dto.BoardDTO">
+		select * from boards where id = #{id}
+	</select>	
+	<update id="updateHitCount">
+		update boards set hit = hit + 1 where id = #{id}
+	</update>
+	<select id="delete">
+		delete from boards where id = #{id}
+	</select>	
+	<update id="update">
+		update boards set boardtitle = #{boardTitle}, boardcontent = #{boardContent} 
+		where id = #{id}
+	</update>
+</mapper>

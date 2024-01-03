@@ -23,7 +23,7 @@
 				<div class="mb-3">
 		          <label for="userPassWd">비밀번호</label>
 		          <div class="input-group">
-		            <input type="password" class="form-control" name="userPassWd" id="userPassWd" placeholder="Password" required>
+		            <input type="password" class="form-control" name="userPasswd" id="userPassWd" placeholder="Password" required>
 		          </div>
 		        </div>
 				<div class="mb-3">

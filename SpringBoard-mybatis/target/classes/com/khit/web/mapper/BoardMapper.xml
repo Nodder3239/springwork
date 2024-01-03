@@ -4,10 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.khit.web.mapper.BoardMapper">	
-	<select id="insert">
+	<insert id="insert">
 		insert into boards(boardtitle, userid, boardcontent)
 		values(#{boardTitle}, #{userId}, #{boardContent})
-	</select>
+	</insert>
 	<select id="findAll" resultType="com.khit.web.dto.BoardDTO">
 		select * from boards order by id desc
 	</select>	
@@ -17,9 +17,9 @@
 	<update id="updateHitCount">
 		update boards set hit = hit + 1 where id = #{id}
 	</update>
-	<select id="delete">
+	<delete id="delete">
 		delete from boards where id = #{id}
-	</select>	
+	</delete>	
 	<update id="update">
 		update boards set boardtitle = #{boardTitle}, boardcontent = #{boardContent} 
 		where id = #{id}

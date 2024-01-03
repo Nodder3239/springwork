@@ -6,7 +6,7 @@
 h2{color: #000; text-align: center;}
 .main-pic{text-align: center;}
 .menu{text-align: center;}
-a{text-decoration: none;}
+a{text-decoration: none; color:#000;}
 ul li{list-style: none;}
 
 /* 헤더 */
@@ -27,6 +27,14 @@ header nav{width: 50%; float: right;}
 @media screen and (max-width: 1180px) {
 	header nav{width: 80%;}
 }
+
+/* footer 스타일 */
+footer{height: 80px; border-top: 2px solid #222; clear: both;}
+#bottomMenu{margin: 10px 20px;}
+#bottomMenu li{float: left; margin: 10px 0; padding: 0 10px;
+	border-right: 1.5px solid #ccc;}
+#bottomMenu li a{color: #444;}
+#bottomMenu li:last-child{border: none;}
 
 /* 메인  */
 .main {text-align:center;}

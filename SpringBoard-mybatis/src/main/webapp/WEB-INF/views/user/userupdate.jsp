@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입...</title>
+<title>회원 수정...</title>
 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
@@ -24,7 +24,7 @@
 				<div class="mb-3">
 		          <label for="userPassWd">비밀번호</label>
 		          <div class="input-group">
-		            <input type="password" class="form-control" name="userPasswd" id="userPassWd" placeholder="Password" required>
+		            <input type="password" class="form-control" name="userPasswd" id="userPasswd" placeholder="Password" required>
 		          </div>
 		        </div>
 				<div class="mb-3">
@@ -40,7 +40,7 @@
 		          </div>
 		        </div>
 		        <div class="mb-3">
-		        	<input class="btn btn-secondary" type="submit" value="수정">
+		        	<input class="btn btn-secondary" type="submit" value="수정하기">
 					<input class="btn btn-secondary" type="reset" value="초기화">
 		        </div>
 			</form>

@@ -75,4 +75,8 @@ public class BoardController {
 		return "redirect:/board/";
 	}
 	
+	@GetMapping("/game")
+	public String game() {
+		return "/board/game";
+	}
 }

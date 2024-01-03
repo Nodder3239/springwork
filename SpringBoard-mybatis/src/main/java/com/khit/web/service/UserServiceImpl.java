@@ -45,4 +45,10 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public void delete(Long id) {
+		userMapper.delete(id);
+		
+	}
+
 }

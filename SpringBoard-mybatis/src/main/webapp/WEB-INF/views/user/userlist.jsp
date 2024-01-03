@@ -8,6 +8,7 @@
 <title>회원 목록...</title>
 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/style.css">
+<script src="https://kit.fontawesome.com/69798321c6.js" ></script>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"/>
@@ -21,6 +22,7 @@
 				<th scope="col">비밀번호</th>
 				<th scope="col">이름</th>
 				<th scope="col">나이</th>
+				<th scope="col">삭제</th>
 			</tr>
 			</thead>
 			<c:forEach items="${userList }" var="user">
@@ -31,6 +33,7 @@
 				<td>${user.userPasswd }</td>
 				<td>${user.userName }</td>
 				<td>${user.userAge }</td>
+				<td><a href="/user/delete?id=${user.id }"><i class="fa-solid fa-square-xmark"></i></a></td>
 			</tr>
 			</tbody>
 			</c:forEach>

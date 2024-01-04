@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <footer>
 	<ul id="bottomMenu">
-		<li><a href="/board/game">커뮤니티 소개</a></li>
-		<li><a href="">개인정보 처리방침</a></li>
+		<li><a href="/game">커뮤니티 소개</a></li>
+		<li><a href="/game2">개인정보 처리방침</a></li>
 		<li><a href="">이용 약관</a></li>
 		<li><a href="">사이트 맵</a></li>
 	</ul>

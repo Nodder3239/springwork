@@ -50,33 +50,33 @@ public class BoardController {
 	// /board?id=
 	@GetMapping
 	public String getBoard(@RequestParam("id") Long id, Model model) {
-		boardService.updateHitCount(id);
+		boardService.updateHit(id);
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute("board", boardDTO);
 		return "/board/detail";	//detail.jsp
 	}
 	
+	//게시물 삭제
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") Long id) {
 		boardService.delete(id);
 		return "redirect:/board/";
 	}
 	
+	//게시물 수정
 	@GetMapping("/update")
 	public String updateForm(@RequestParam("id") Long id, Model model) {
+		//수정할 게시글 가져오기
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute("board", boardDTO);
-		return "/board/updateform";
+		return "/board/boardupdate";
 	}
 	
 	@PostMapping("/update")
 	public String update(@ModelAttribute BoardDTO boardDTO) {
+		//수정해서 다시 저장함(객체로 저장)
 		boardService.update(boardDTO);
 		return "redirect:/board/";
 	}
 	
-	@GetMapping("/game")
-	public String game() {
-		return "/board/game";
-	}
 }

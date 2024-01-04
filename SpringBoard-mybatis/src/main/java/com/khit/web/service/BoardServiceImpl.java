@@ -40,8 +40,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void updateHitCount(Long id) {
-		boardMapper.updateHitCount(id);
+	public void updateHit(Long id) {
+		boardMapper.updateHit(id);
 		
 	}
 

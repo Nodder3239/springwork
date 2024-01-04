@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.khit.web.dto.UserDTO;
 import com.khit.web.service.UserService;
@@ -102,6 +103,16 @@ public class UserController {
 		userService.delete(id);
 		return "redirect:/user/";
 	}
+	
+	//아이디 중복 검사
+	@PostMapping("/checkuserid")
+	public @ResponseBody String userCheckUserId(
+			@RequestParam("userId") String userId) {
+		log.info(userId);
+		String checkResult = userService.checkUserId(userId);
+		return checkResult;
+	}
+	
 	
 	
 }

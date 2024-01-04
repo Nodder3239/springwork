@@ -14,7 +14,7 @@
 	<select id="findById" resultType="com.khit.web.dto.BoardDTO">
 		select * from boards where id = #{id}
 	</select>	
-	<update id="updateHitCount">
+	<update id="updateHit">
 		update boards set hit = hit + 1 where id = #{id}
 	</update>
 	<delete id="delete">
@@ -22,6 +22,6 @@
 	</delete>	
 	<update id="update">
 		update boards set boardtitle = #{boardTitle}, boardcontent = #{boardContent} 
-		where id = #{id}
+		, updatedtime = now() where id = #{id}
 	</update>
 </mapper>

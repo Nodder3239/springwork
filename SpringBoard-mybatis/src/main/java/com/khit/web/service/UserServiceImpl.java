@@ -42,13 +42,20 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void update(UserDTO userDTO) {
 		userMapper.update(userDTO);
-		
 	}
 
 	@Override
 	public void delete(Long id) {
 		userMapper.delete(id);
-		
+	}
+
+	@Override
+	public String checkUserId(String userId) {
+		UserDTO user = userMapper.findByUserId(userId);
+		if(user == null) {	//DB에 저장된 객체가 없으면
+			return "usable";	//사용가능
+		}
+		return "not_usable";	//사용불가
 	}
 
 }

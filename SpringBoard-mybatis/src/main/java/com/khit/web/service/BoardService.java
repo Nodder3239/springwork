@@ -16,7 +16,6 @@ public interface BoardService {
 
 	void update(BoardDTO boardDTO);
 
-	void updateHitCount(Long id);
-
+	void updateHit(Long id);
 
 }

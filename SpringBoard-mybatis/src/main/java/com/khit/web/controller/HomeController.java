@@ -16,4 +16,14 @@ public class HomeController {
 	public String main() {
 		return "main";
 	}
+	
+	@GetMapping("/game")
+	public String game() {
+		return "/ex/game";
+	}
+	
+	@GetMapping("/game2")
+	public String game2() {
+		return "/ex/game2";
+	}
 }

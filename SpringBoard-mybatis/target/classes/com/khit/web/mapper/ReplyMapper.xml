@@ -6,8 +6,20 @@
 
 <mapper namespace="com.khit.web.mapper.ReplyMapper">
 	<insert id="insert">
-		insert into replys(boardid, replyer, replycontent)
-		values(#{boardId}, #{replyer}, #{replycontent})
+		insert into reply(boardid, replyer, replycontent)
+		values(#{boardId}, #{replyer}, #{replyContent})
 	</insert>
-	
+	<select id="getReplyList" resultType="com.khit.web.dto.ReplyDTO">
+		select * from reply where boardid = #{id}
+	</select>
+	<select id="findReplyById" resultType="com.khit.web.dto.ReplyDTO">
+		select * from reply where id = #{id}
+	</select>
+	<update id="update">
+		update reply set replycontent = #{replyContent} 
+		, updatedtime = now() where id = #{id}
+	</update>
+	<delete id="delete">
+		delete from reply where id = #{id}
+	</delete>
 </mapper>

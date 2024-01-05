@@ -9,6 +9,7 @@
 <title>글 목록...</title>
 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/style.css"/>
+<script src="/resources/js/bootstrap.bundle.js"></script>
 <link >
 </head>
 <body>
@@ -30,7 +31,11 @@
 				<c:forEach items="${boardList }" var="board">
 					<tr>
 						<th scope="row">${board.id }</th>
-						<td class="td_title"><a href="/board?id=${board.id}">${board.boardTitle }</a></td>
+						<td class="td_title"><a href="/board?id=${board.id}">${board.boardTitle }
+							<c:if test="${board.replyCount ne 0}">
+								<small>[&nbsp;<c:out value="${board.replyCount}"/>&nbsp;]</small>
+							</c:if>
+						</a></td>
 						<td>${board.userId }</td>
 						<td><c:choose>
 							<c:when test="${not empty board.updatedTime }">
@@ -45,6 +50,25 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<nav>
+		  <ul class="pagination justify-content-center">
+		  	<li class="page-item">
+		      <a class="page-link" href="#">Start</a>
+		    </li>
+		    <li class="page-item disabled">
+		      <a class="page-link">Previous</a>
+		    </li>
+		    <li class="page-item"><a class="page-link" href="#">1</a></li>
+		    <li class="page-item"><a class="page-link" href="#">2</a></li>
+		    <li class="page-item"><a class="page-link" href="#">3</a></li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">Next</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">End</a>
+		    </li>
+		  </ul>
+		</nav>
 		<div class="btn_write">
 			<a href = "/board/write"><button class="btn btn-outline-secondary">글쓰기</button></a>
 		</div>

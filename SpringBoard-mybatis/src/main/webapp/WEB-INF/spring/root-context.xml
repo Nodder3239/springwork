@@ -24,6 +24,12 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
+	<!-- 파일 업로드 설정, 10MB -->
+	<bean id="multipartResolver"
+	 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+		<property name="maxUploadSize" value="10485760"/>
+	</bean>
+	
 	<!-- mybatis 스캔 -->
 	<mybatis-spring:scan base-package="com.khit.web.mapper"/>
 </beans>

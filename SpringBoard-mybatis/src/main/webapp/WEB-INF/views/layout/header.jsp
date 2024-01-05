@@ -14,7 +14,7 @@
 					<li><a href="/user/login">로그인</a></li>
 					<li><a href="/user/join">회원가입</a></li>
 					<li><a href="/user/">회원목록</a></li>
-					<li><a href="/board/">게시판</a></li>		
+					<li><a href="/board/paging">게시판</a></li>		
 				</ul>
 			</c:when>
 			<c:otherwise>
@@ -22,7 +22,7 @@
 					<li><a href="/user/logout">(${sessionId }님)로그아웃</a></li>
 					<li><a href="/user/update">나의 정보</a></li>
 					<li><a href="/user/">회원목록</a></li>
-					<li><a href="/board/">게시판</a></li>		
+					<li><a href="/board/paging">게시판</a></li>		
 				</ul>
 			</c:otherwise>
 		</c:choose>

@@ -9,14 +9,14 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice	//오류를 처리하는 주요 클래스
 public class GlobalExceptionAdvice {
-	
+	/*
 	//예외 처리(코드 및 구문 오류)
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception exception, Model model) {
 		model.addAttribute("exception", exception);
 		return "/exception/global_error";
 	}
-	
+	*/
 	//예외 처리(페이지 찾을 수 없음)
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)

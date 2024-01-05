@@ -3,6 +3,7 @@ package com.khit.web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
@@ -26,4 +27,11 @@ public class HomeController {
 	public String game2() {
 		return "/ex/game2";
 	}
+	
+	@GetMapping("favicon.ico")
+	@ResponseBody
+	public void returnNoFavicon() {
+		
+	}
+	
 }

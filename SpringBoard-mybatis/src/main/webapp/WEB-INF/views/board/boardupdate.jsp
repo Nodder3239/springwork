@@ -13,7 +13,7 @@
 	<jsp:include page="../layout/header.jsp"/>
 	<div id="content">
 		<h2>글 수정하기</h2>
-		<form action="/board/update" method="post" enctype="multipart/form-data">
+		<form action="/board/update" method="post">
 			<input type="hidden" name="id" value="${board.id }">
 			<input type="text" name="boardTitle" class="form-control mt-4 mb-2"
 				value="${board.boardTitle }" required

@@ -26,7 +26,7 @@
 					<div style="margin-left: 10px; font-size: 15px">
 					<c:choose>
 						<c:when test="${not empty board.updatedTime }">
-							작성일시: <fmt:formatDate value="${board.createdTime }" pattern="yyyy-MM-dd HH:mm:ss"/><br>
+							작성일시: <fmt:formatDate value="${board.createdTime }" pattern="yyyy-MM-dd HH:mm:ss"/>&nbsp;
 							수정일시: <fmt:formatDate value="${board.updatedTime }" pattern="yyyy-MM-dd HH:mm:ss"/>
 						</c:when>
 						<c:otherwise>
@@ -46,6 +46,13 @@
 					작성자: ${board.userId }
 					</p>
 					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<c:if test="${not empty board.boardFilename }">
+					<img src="/resources\\upload/${board.boardFilename }" alt="" style="width:100%">
+				</c:if>
 				</td>
 			</tr>
 			<tr>

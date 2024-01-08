@@ -19,7 +19,7 @@
 	<jsp:include page="../layout/header.jsp"/>
 	<div id="content">
 		<h2>글쓰기</h2>
-		<form action="/board/write" method="post">
+		<form action="/board/write" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="userId" value="${sessionId }">
 			<input type="text" name="boardTitle" class="form-control mt-4 mb-2"
 				placeholder="제목을 입력해주세요." required
@@ -31,7 +31,7 @@
 			</div>
 			<div class="form-group">
 			    <label for="exampleFormControlFile1">사진 업로드</label>
-			    <input type="file" class="form-control-file" id="exampleFormControlFile1" name=boardFilename>
+			    <input type="file" class="form-control-file" id="exampleFormControlFile1" name=filename>
 			</div>
 			<input class="btn btn-outline-secondary" type="submit" value="등록">
 			<input class="btn btn-outline-secondary" type="reset" value="초기화">

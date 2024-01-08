@@ -1,6 +1,5 @@
 package com.khit.web.controller;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -44,9 +43,32 @@ public class BoardController {
 	
 	//글쓰기
 	@PostMapping("/write")
-	public String write(@ModelAttribute BoardDTO boardDTO){
+	public String write(@ModelAttribute BoardDTO boardDTO, MultipartFile filename) throws IllegalStateException, IOException {
+		String originFilename = filename.getOriginalFilename();
+		long filesize = filename.getSize();
+		String fileType = filename.getContentType();
+		log.info(originFilename);
+		log.info(filesize + "B");
+		log.info(fileType);
+		
+		//서버에 저장	
+		String boardFilename = "";
+		if (!filename.isEmpty()) {
+			String filepath = "C:\\springworks\\SpringBoard-mybatis\\src\\main\\webapp\\resources\\upload";
+			//String originFilename = filename.getOriginalFilename();
+			//중복 이름 방지한 고유 ID 객체 생성
+			UUID uuid = UUID.randomUUID();
+			boardFilename = uuid.toString() + "_" + originFilename;
+			
+			File file = new File(filepath + "\\" + boardFilename);
+			filename.transferTo(file);	//서버 폴더에 저장
+		}
+		
+		boardDTO.setBoardFilename(boardFilename);
+		log.info(boardFilename);
 		boardService.insert(boardDTO);
 		return "redirect:/board/paging";
+		
 	}
 	
 	//글 목록
@@ -54,7 +76,7 @@ public class BoardController {
 	public String getListAll(Model model) {
 		List<BoardDTO> boardDTOList = boardService.findAll();
 		model.addAttribute("boardList", boardDTOList);
-		return "/board/paging";
+		return "/board/pagelist";
 	}
 	
 	//글 목록(페이지 처리)
@@ -94,12 +116,14 @@ public class BoardController {
 		model.addAttribute("replyList", replyDTO);
 		return "/board/detail";	//detail.jsp
 	}
+
+	
 	
 	//게시물 삭제
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") Long id) {
 		boardService.delete(id);
-		return "redirect:/board/pagelist";
+		return "redirect:/board/paging";
 	}
 	
 	//게시물 수정
@@ -115,7 +139,7 @@ public class BoardController {
 	public String update(@ModelAttribute BoardDTO boardDTO) {
 		//수정해서 다시 저장함(객체로 저장)
 		boardService.update(boardDTO);
-		return "redirect:/board/pagelist";
+		return "redirect:/board/paging";
 	}
 	
 }

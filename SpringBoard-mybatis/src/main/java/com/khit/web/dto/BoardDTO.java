@@ -16,4 +16,5 @@ public class BoardDTO {
 	private Timestamp createdTime;
 	private Timestamp updatedTime;
 	private int replyCount;
+	private String boardFilename;
 }

@@ -36,12 +36,15 @@ public class ReplyController {
 		return "redirect:/board?id=" + replyDTO.getBoardId();
 	}
 	
+	//´ñ±Û ¼öÁ¤ Æû
 	@GetMapping("/update")
 	public String updateReplyForm(@RequestParam("id") Long id, Model model) {
+		//ÇØ´ç ´ñ±Û °¡Á®¿À±â
 		ReplyDTO replyDTO = replyService.findReplyById(id);
 		model.addAttribute("reply", replyDTO);
 		return "/board/replyupdate";
 	}
+	//´ñ±Û ¼öÁ¤ Ã³¸®
 	@PostMapping("/update")
 	public String update(@ModelAttribute ReplyDTO replyDTO) {
 		replyService.update(replyDTO);
@@ -49,8 +52,10 @@ public class ReplyController {
 		return "redirect:/board?id=" + replyDTO.getBoardId();
 	}
 	
+	//´ñ±Û »èÁ¦
 	@GetMapping("/delete")
-	public String delete(@RequestParam("id") Long id, Long boardId) {
+	public String delete( @RequestParam("boardid") Long boardId,
+			@RequestParam("id") Long id) {
 		replyService.delete(id);
 		boardService.updateHit2(boardId);
 		return "redirect:/board?id=" + boardId;

@@ -85,9 +85,9 @@ public class BoardController {
 	@GetMapping("/paging")
 	public String getPageList(Model model,
 			 @RequestParam(value="page", required=false,
-			  defaultValue="1") int page) {
+			  defaultValue="1") int page, String[] field, String kw) {
 		//페이지와 글 개수를 구현
-		List<BoardDTO> boardDTOList = boardService.pagingList(page);
+		List<BoardDTO> boardDTOList = boardService.pagingList(page, field, kw);
 		model.addAttribute("boardList", boardDTOList);
 		
 		//화면 하단 구성

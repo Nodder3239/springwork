@@ -23,8 +23,11 @@ public interface BoardMapper {
 
 	void updateHit2(Long id);
 
-	List<BoardDTO> pagingList(Map<String, Integer> pagingParam);
-
+	List<BoardDTO> pagingList(Map<String, Object> pagingParam);
+	
 	int boardCount();
+
+
+
 
 }

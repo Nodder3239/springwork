@@ -50,6 +50,20 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<!-- 검색 영역 -->
+		<div style="width:50%; margin: 0 auto;">
+		  <form action="/board/paging" method="get">
+		  	<div style="display: flex;">
+				<select name="field" class="btn btn-outline-secondary dropdown-toggle">
+					<option value="t">제목</option>
+					<option value="c">내용</option>
+					<option value="i">작성자</option>
+				</select>
+				<input type="text" class="form-control" name="kw" value="${kw }" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+				<button type="submit" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+		  	</div>
+		  </form>
+		</div>
 		<!-- 페이지 처리 영역 -->
 		<nav>
 			<ul class="pagination justify-content-center">
@@ -91,24 +105,30 @@
 		    	</c:choose>
 		    </c:forEach>
 		    <!-- 다음 페이지 -->
-		    <c:choose>
-				<c:when test="${paging.maxPage > paging.page }">
-				    <li class="page-item">
-				      <a class="page-link" href="/board/paging?page=${paging.page+1}"><i class="fa-solid fa-play"></i></a>
-				    </li>
-				    <li class="page-item">
-				      <a class="page-link" href="/board/paging?page=${paging.endPage+1}"><i class="fa-solid fa-forward"></i></a>
-				    </li>
-		    	</c:when>
-		    	<c:otherwise>
-		    		<li class="page-item disabled">
-				      <a class="page-link"><i class="fa-solid fa-play"></i></a>
-				    </li>
-				    <li class="page-item disabled">
-				      <a class="page-link"><i class="fa-solid fa-forward"></i></a>
-				    </li>
-		    	</c:otherwise>
-		    </c:choose>
+		    <c:if test="${paging.endPage >= paging.page && paging.endPage != paging.maxPage}">
+			    <li class="page-item">						    
+			      <a class="page-link" href="/board/paging?page=${paging.page+1}"><i class="fa-solid fa-play"></i></a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="/board/paging?page=${paging.endPage+1}"><i class="fa-solid fa-forward"></i></a>
+			    </li>
+	    	</c:if>
+	    	<c:if test="${paging.endPage == paging.maxPage && paging.page < paging.endPage}">
+			    <li class="page-item">
+			      <a class="page-link" href="/board/paging?page=${paging.page+1}"><i class="fa-solid fa-play"></i></a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="/board/paging?page=${paging.endPage}"><i class="fa-solid fa-forward"></i></a>
+			    </li>
+	    	</c:if>
+	    	<c:if test="${paging.maxPage == paging.page }">
+	    		<li class="page-item disabled">
+			      <a class="page-link"><i class="fa-solid fa-play"></i></a>
+			    </li>
+			    <li class="page-item disabled">
+			      <a class="page-link"><i class="fa-solid fa-forward"></i></a>
+			    </li>
+	    	</c:if>
 		  </ul>
 		</nav>
 		<div class="btn_write">

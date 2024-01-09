@@ -23,8 +23,9 @@ public interface BoardService {
 
 	void updateHit2(Long boardId);
 
-	List<BoardDTO> pagingList(int page);
+	List<BoardDTO> pagingList(int page, String[] field, String kw);
 
 	PageDTO pagingParam(int page);
+
 
 }

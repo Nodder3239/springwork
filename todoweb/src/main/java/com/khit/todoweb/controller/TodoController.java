@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.khit.todoweb.dto.PageRequestDTO;
+import com.khit.todoweb.dto.PageResponseDTO;
 import com.khit.todoweb.dto.TodoDTO;
 import com.khit.todoweb.service.TodoService;
 
@@ -34,7 +37,7 @@ public class TodoController {
 	public String register(@ModelAttribute TodoDTO todoDTO) {
 		log.info("todoDTO: " + todoDTO);
 		todoService.insert(todoDTO);
-		return "/index";
+		return "redirect:/todo/paging";
 	}
 	
 	@GetMapping("/list")
@@ -44,9 +47,44 @@ public class TodoController {
 		return "/todo/list";
 	}
 	
-	@GetMapping("/delete")
-	public String todoDelete(Long tno) {
-		todoService.delete(tno);
-		return "redirect:/todo/list";
+	@GetMapping("/paging")
+	public String todoPagingList(@ModelAttribute PageRequestDTO pageRequestDTO,
+			Model model) {
+		PageResponseDTO<TodoDTO> pageResponseDTO = 
+				todoService.pagingList(pageRequestDTO);
+		model.addAttribute("responseDTO", pageResponseDTO);
+		return "/todo/pageList";
 	}
+	
+	//1건 상세보기
+	@GetMapping
+	public String todoDetail(@RequestParam("tno") Long tno, 
+			PageRequestDTO pageRequestDTO,
+			Model model) {
+		TodoDTO todoDTO = todoService.findByTno(tno);
+		model.addAttribute("todo", todoDTO);
+		return "/todo/detail";
+	}
+	
+	//삭제
+	@GetMapping("/delete")
+	public String todoDelete(@RequestParam("tno") Long tno) {
+		todoService.delete(tno);
+		return "redirect:/todo/paging";
+	}
+	
+	//수정
+	@GetMapping("/update")
+	public String updateform(@RequestParam("tno") Long tno, Model model) {
+		TodoDTO todoDTO = todoService.findByTno(tno);
+		model.addAttribute("todo", todoDTO);
+		return "/todo/update";
+	}
+	
+	@PostMapping("/update")
+	public String update(@ModelAttribute TodoDTO todoDTO) {
+		todoService.update(todoDTO);
+		return "redirect:/todo?tno=" + todoDTO.getTno();
+	}
+	
 }

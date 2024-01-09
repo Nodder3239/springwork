@@ -61,12 +61,14 @@ public class BoardServiceImpl implements BoardService{
 	int blockLimit = 5;
 	
 	@Override
-	public List<BoardDTO> pagingList(int page) {
+	public List<BoardDTO> pagingList(int page, String[] field, String kw) {
 		//select * from boards order by id desc limit 0, 10
 		int pageStart = (page - 1) * pageLimit;
-		Map<String, Integer> pagingParam = new HashMap<>();
+		Map<String, Object> pagingParam = new HashMap<>();
 		pagingParam.put("start", pageStart);
 		pagingParam.put("limit", pageLimit);
+		pagingParam.put("field", field);
+		pagingParam.put("kw", kw);
 		List<BoardDTO> pagingList = boardMapper.pagingList(pagingParam);
 		return pagingList;
 	}

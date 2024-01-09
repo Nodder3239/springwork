@@ -37,7 +37,25 @@
 		WHERE id = #{id}
 	</update>
 	<select id="pagingList" resultType="com.khit.web.dto.BoardDTO">
-		select * from boards order by id desc limit #{start}, #{limit}
+	    SELECT * FROM boards
+	    <where>
+	        <if test="field != null">
+	            <foreach collection="field" item="f" open="(" close=")" separator=" OR ">
+	                <choose>
+	                    <when test="f == 't'.toString()">
+	                        boardtitle LIKE CONCAT('%', #{kw}, '%')
+	                    </when>
+	                    <when test="f == 'c'.toString()">
+	                        boardcontent LIKE CONCAT('%', #{kw}, '%')
+	                    </when>
+	                    <when test="f == 'i'.toString()">
+	                        userid LIKE CONCAT('%', #{kw}, '%')
+	                    </when>
+	                </choose>
+	            </foreach>
+	        </if>
+	    </where>
+	    ORDER BY id DESC LIMIT #{start}, #{limit}
 	</select>
 	<select id="boardCount" resultType="Integer">
 		select count(*) from boards

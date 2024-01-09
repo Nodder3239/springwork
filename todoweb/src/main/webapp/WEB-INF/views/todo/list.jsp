@@ -31,7 +31,7 @@
 					  	<c:forEach items="${todoList }" var="todo">
 					    <tr>
 					      <th scope="row">${todo.tno }</th>
-					      <td>${todo.title }</td>
+					      <td><a href="/todo?tno=${todo.tno }">${todo.title }</a></td>
 					      <td>${todo.writer }</td>
 					      <td><fmt:formatDate value="${todo.createdDate }" pattern="yyyy-MM-dd"/></td>
 					      <td><a href="/todo/delete?tno=${todo.tno }" onclick="return confirm('정말로 삭제하시겠습니까?')"><i class="fa-solid fa-square-xmark" style="color: #000;"></i></a></td>

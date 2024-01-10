@@ -96,4 +96,9 @@ public class BoardServiceImpl implements BoardService{
 		return pageDTO;
 	}
 
+	@Override
+	public void updateFile(BoardDTO boardDTO) {
+		boardMapper.updateFile(boardDTO);	
+	}
+
 }

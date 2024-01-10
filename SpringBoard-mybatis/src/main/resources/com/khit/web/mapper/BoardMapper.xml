@@ -27,9 +27,9 @@
 		update boards set boardtitle = #{boardTitle}, boardcontent = #{boardContent} 
 		, updatedtime = now() where id = #{id}
 	</update>
-	<update id="update2">
+	<update id="updateFile">
 		update boards set boardtitle = #{boardTitle}, boardcontent = #{boardContent} 
-		, updatedtime = now() where id = #{id}
+		, boardfilename=#{boardFilename}, updatedtime = now() where id = #{id}
 	</update>
 	<update id="updateReplyCount">
 		update boards set replycount = 

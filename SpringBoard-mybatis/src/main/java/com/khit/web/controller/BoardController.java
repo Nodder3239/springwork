@@ -89,6 +89,7 @@ public class BoardController {
 		//페이지와 글 개수를 구현
 		List<BoardDTO> boardDTOList = boardService.pagingList(page, field, kw);
 		model.addAttribute("boardList", boardDTOList);
+		model.addAttribute("kw", kw);
 		
 		//화면 하단 구성
 		PageDTO pageDTO = boardService.pagingParam(page);
@@ -136,9 +137,37 @@ public class BoardController {
 	}
 	
 	@PostMapping("/update")
-	public String update(@ModelAttribute BoardDTO boardDTO) {
+	public String update(@ModelAttribute BoardDTO boardDTO, MultipartFile filename) throws IllegalStateException, IOException {
+		if(boardDTO.getBoardFilename() == null) { //파일이 없는 경우
+			boardService.update(boardDTO);
+			log.info("안녕하세요");
+		}else {	//파일이 있는 경우		
+		String originFilename = filename.getOriginalFilename();
+		long filesize = filename.getSize();
+		String fileType = filename.getContentType();
+		log.info(originFilename);
+		log.info(filesize + "B");
+		log.info(fileType);
+		
+		//서버에 저장	
+		String boardFilename = "";
+		if (!filename.isEmpty()) {
+			String filepath = "C:\\springworks\\SpringBoard-mybatis\\src\\main\\webapp\\resources\\upload";
+			//String originFilename = filename.getOriginalFilename();
+			//중복 이름 방지한 고유 ID 객체 생성
+			UUID uuid = UUID.randomUUID();
+			boardFilename = uuid.toString() + "_" + originFilename;
+			
+			File file = new File(filepath + "\\" + boardFilename);
+			filename.transferTo(file);	//서버 폴더에 저장
+		}
+		
+		boardDTO.setBoardFilename(boardFilename);
+		log.info(boardFilename);
+			boardService.updateFile(boardDTO);
+		}
 		//수정해서 다시 저장함(객체로 저장)
-		boardService.update(boardDTO);
+		//boardService.update(boardDTO);
 		return "redirect:/board/paging";
 	}
 	

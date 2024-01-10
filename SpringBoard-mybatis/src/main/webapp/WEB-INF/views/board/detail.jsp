@@ -10,6 +10,7 @@
 <title>글 상세보기...</title>
 <link rel="stylesheet" href="/resources/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/style.css"/>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://kit.fontawesome.com/69798321c6.js" ></script>
 <link >
 </head>
@@ -75,6 +76,37 @@
 			</tr>
 		</table>
 		<!-- 댓글 목록 -->
+		<%-- <div id="reply-list">
+			<div class = "reply">
+				<c:forEach items="${replyList }" var="reply">
+					<div class = "replyer" >
+						<p class="text-left" style="font-size: 18px; font-weight:bold">${reply.replyer }</p>
+					</div>
+					<div class = "replyContent">
+						<p class="text-left">${reply.replyContent }</p>
+						<p class="text-left" style="font-size: 13px">
+							<c:choose>
+								<c:when test="${not empty reply.updatedTime }">
+									작성일시: <fmt:formatDate value="${reply.createdTime }" pattern="yyyy-MM-dd HH:mm:ss"/>&nbsp;
+									수정일시: <fmt:formatDate value="${reply.updatedTime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+								</c:when>
+								<c:otherwise>
+									작성일시: <fmt:formatDate value="${reply.createdTime }" pattern="yyyy-MM-dd HH:mm:ss"/>
+								</c:otherwise>
+							</c:choose>
+							<c:if test="${sessionId eq reply.replyer }">
+								<a href="/reply/update?id=${reply.id }">
+								<i class="fa-solid fa-pen"></i></a>
+								<a href="/reply/delete?boardId=${reply.boardId}&id=${reply.id }"
+										onclick="return confirm('댓글을 삭제하시겠습니까?')">
+								<i class="fa-solid fa-trash-can"></i></a>
+							</c:if>
+						</p>
+					</div>
+				</c:forEach>
+			</div>
+		</div> --%>
+				
 		<div class = "reply">
 			<c:forEach items="${replyList }" var="reply">
 				<div class = "replyer" >
@@ -103,6 +135,7 @@
 				</div>
 			</c:forEach>
 		</div>
+		
 		<!-- 댓글 등록 -->
 		<c:if test="${not empty sessionId}">
 		<div class="replyWrite">
@@ -115,6 +148,13 @@
 				</p>
 				<input type="button" class="btn btn-outline-secondary" onclick="checkReply()" value="등록"></input>
 			</form>	
+			<%-- <input type="hidden" name="boardId" id="boardId" value="${board.id }">
+			<input type="hidden" name="replyer" id="replyer" value="${sessionId }">
+			<p>
+			<textarea name="replyContent" id="replyContent" class="form-control" rows="5"
+					placeholder="댓글 작성란" style="resize: none;"></textarea>
+			</p>
+			<input type="button" class="btn btn-outline-secondary" onclick="replyInsert()" value="등록"></input> --%>	
 		</div>
 		</c:if>	
 	</div>
@@ -133,6 +173,52 @@
 			}
 				
 		}
+		
+		/*
+		const replyInsert = function() {
+			//댓글 등록이 비어있으면 "댓글을 입력해 주세요"
+			//댓글 내용이 있으면 서버에 전송
+			let boardId = "${board.id}";
+			let replyer = document.getElementById("replyer").value;
+			let content = document.getElementById("replyContent").value;
+			
+			if(content == ""){
+				alert("댓글을 입력해 주세요.")
+				document.getElementById("replyContent").focus();
+				return false;
+			}
+			
+			//ajax 구현
+			$.ajax({
+				//요청방식: POST, 요청주소: /reply/insert
+				type: "POST",
+				url: "/reply/insert",
+				data:{
+					boardId: boardId,
+					replyer: replyer,
+					replyContent: content
+					},
+				success: function(replyList){
+					alert("댓글 등록 성공");
+					console.log(replyList);
+					//댓글 목록
+					let output = "";
+					for(let i in replyList){
+						output += "<div class='reply'>";
+						output += "<p>" + replyList[i].replyContent + "</p>"
+						output += "<p>작성자: " + replyList[i].replyer + "</p>"
+						output += "<p>(작성일: " + replyList[i].createdTime + ")</p>"						
+						output += "</div>"
+					}
+					document.getElementById("reply-list").innerHTML = output;
+					document.getElementById("replyContent").value = "";	//댓글 내용 초기화
+				},
+				error: function(){
+					console.log("댓글 등록 실패");
+				}
+			});				
+		}
+		*/
 	</script>
 </body>
 </html>

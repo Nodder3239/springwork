@@ -27,6 +27,8 @@ public interface BoardMapper {
 	
 	int boardCount();
 
+	void updateFile(BoardDTO boardDTO);
+
 
 
 

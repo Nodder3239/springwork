@@ -27,5 +27,7 @@ public interface BoardService {
 
 	PageDTO pagingParam(int page);
 
+	void updateFile(BoardDTO boardDTO);
+
 
 }

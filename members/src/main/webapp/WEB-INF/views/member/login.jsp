@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +24,15 @@
 			  <div class="checkbox mb-3">
 			  </div>
 			  	<button type="submit" class="btn btn-secondary">로그인</button>
-      			<button type="reset" class="btn btn-secondary">취소</button>
+      			<button type="button" class="btn btn-secondary" onclick="main()">취소</button>
 			  <p class="mt-5 mb-3 text-muted">&copy; 2023-2024</p>
 			</form>
 		</div>
 	</div>
+	<script>
+		const main = function(){
+			location.href="/main";
+		}
+	</script>
 </body>
 </html>

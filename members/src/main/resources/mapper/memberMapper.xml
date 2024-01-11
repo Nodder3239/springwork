@@ -4,6 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+  <!-- MemberMapper.xml -->
 <mapper namespace="Member">
 	<insert id="insert">
 		insert into t_member (email, password, name, age)
@@ -21,4 +22,16 @@
 	<update id="update">
 		update t_member set password=#{password}, name=#{name}, age=#{age} where email=#{email}
 	</update>
+	
+	<select id="findAll" resultType="member">
+		select * from t_member order by id desc
+	</select>
+	
+	<delete id="delete">
+		delete from t_member where id = #{id}
+	</delete>
+	
+	<select id="findById" resultType="member">
+		select * from t_member where id = #{id}
+	</select>
 </mapper>

@@ -16,10 +16,8 @@
 <body>
 	<div class="content">
 		<div id="content_join">
-		<h2>회원 가입</h2>
-		<form action="/member/update" method="post" name="userform">
-				<div class="mb-3">
-					<input type="hidden" name="id" value="${member.id }">
+		<h2>상세 보기</h2>
+			<div class="mb-3">
 		          <label for="userId">이메일</label>
 		          <div class="input-group">
 		            <input type="text" class="form-control" name="email" id="email" value="${member.email }" readonly>
@@ -29,31 +27,40 @@
 				<div class="mb-3">
 		          <label for="userPassWd">비밀번호</label>
 		          <div class="input-group">
-		            <input type="password" class="form-control" name="password" id="password" value="${member.password }" required>
+		            <input type="text" class="form-control" name="password" id="password" value="${member.password }" readonly>
 		          </div>
 		        </div>
 				<div class="mb-3">
 		          <label for="userName">이름</label>
 		          <div class="input-group">
-		            <input type="text" class="form-control" name="name" id="name" value="${member.name }" required>
+		            <input type="text" class="form-control" name="name" id="name" value="${member.name }" readonly>
 		          </div>
 		        </div>
 		        <div class="mb-3">
 		          <label for="userAge">나이</label>
 		          <div class="input-group">
-		            <input type="text" class="form-control" name="age" id="age" value="${member.age }">
+		            <input type="text" class="form-control" name="age" id="age" value="${member.age }" readonly>
 		          </div>
 		        </div>
-		        <div class="mb-3">
-		        	<input class="btn btn-secondary" type="submit" value="등록">
-		        	<button class="btn btn-secondary" type="button" onclick="list()">목록</button>
-		        </div>
-			</form>
+		        <div class="mb-3">		        	
+					<button class="btn btn-secondary" type="button" onclick="update(${member.id})">수정</button>
+					<button class="btn btn-secondary" type="button" onclick="del(${member.id})">삭제</button>
+		       		<button class="btn btn-secondary" type="button" onclick="list()">목록</button>
+		       </div>
 		</div>
 	</div>
-	<script>
+		<script>
 		const list = function(){
 			location.href="/member/";			
+		}
+		const update = function(mid){
+			location.href="/member/update2?id=" + mid;			
+		}
+		const del = function(mid){
+			let c = confirm("정말로 삭제하시겠습니까?");
+			if(c == true){
+				location.href="/member/delete?id=" + mid;
+			}
 		}
 	</script>
 </body>

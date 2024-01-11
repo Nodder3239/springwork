@@ -1,5 +1,7 @@
 package com.khit.members.repository;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,6 +29,19 @@ public class MemberRepository {
 
 	public Object update(MemberDTO memberDTO) {
 		return sql.update("Member.update", memberDTO);
+	}
+
+	public List<MemberDTO> findAll() {
+		return sql.selectList("Member.findAll");
+	}
+
+	public void delete(Long id) {
+		sql.delete("Member.delete", id);
+		
+	}
+
+	public MemberDTO findById(Long id) {
+		return sql.selectOne("Member.findById", id);
 	}
 
 }

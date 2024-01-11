@@ -10,14 +10,16 @@
 <body>
 	<h2>Members 프로젝트 입니다.</h2>
 	<c:choose>
-		<c:when test="${empty sessionName }">
+		<c:when test="${empty sessionEmail }">
 			<a href="/member/join">회원가입</a>
 			<a href="/member/login">로그인</a>
+			<a href="/member/">회원목록</a>
 		</c:when>
 		<c:otherwise>
-			<p>${sessionName }님, 안녕하세요</p>
+			<p>${sessionEmail }님, 안녕하세요</p>
 			<a href="/member/update">회원정보 수정</a>
 			<a href="/member/logout">로그아웃</a>
+			<a href="/member/">회원목록</a>
 		</c:otherwise>
 	</c:choose>
 </body>

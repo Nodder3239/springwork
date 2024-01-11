@@ -24,7 +24,7 @@
 		const myFunction = function(){
 			//alert("test...");
 			$.ajax({
-				//요청 방식: GET, 요청 주소: /ex01, (함수)- 성공, 실패
+				//요청 방식: POST, 요청 주소: /ex02, (함수)- 성공, 실패
 				type: "POST",
 				url: "/ex02",
 				success: function(res){	//res는 서버에서 보내주는 자료

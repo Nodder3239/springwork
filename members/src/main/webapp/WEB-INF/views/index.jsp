@@ -11,5 +11,6 @@
 	<h2>Members 프로젝트 입니다.</h2>
 	<a href="/member/join">회원가입</a>
 	<a href="/member/login">로그인</a>
+	<a href="/member/">회원목록</a>
 </body>
 </html>
